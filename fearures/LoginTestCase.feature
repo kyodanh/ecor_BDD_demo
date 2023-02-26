@@ -12,4 +12,4 @@ Feature: Login test case
     |dannguyen|tesst12|
 
 
-#    run chạy sử dụng commine line python -m behave fearures/LoginTestCase.feature
+#    run chạy sử dụng commine line python -m behave fearures/LoginTestCase.feature web sử dụng là https://magento.softwaretestingboard.com/
