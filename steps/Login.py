@@ -1,10 +1,9 @@
-import time
 
 from behave import *
 from selenium import webdriver
 import time
 from selenium.webdriver.common.by import By
-from selenium.webdriver.remote.webdriver import get_remote_connection
+from selenium.webdriver.common.action_chains import ActionChains
 
 
 @given(u'Thực hiện mở trang web')
@@ -30,14 +29,26 @@ def step_impl(context,username,password):
 
 @when(u'Thực hiện bấm vào nút Login')
 def step_impl(context):
-    driver = context.driver
-    driver.find_element(By.XPATH,"//*[@id='send2']/span").click()
-
+    # context.driver
+    # action = ActionChains(context.driver)
+    # x = context.driver.find_element(By.XPATH,"//*[@id='send2']")
+    # action.click(x)
+    context.driver.find_element(By.XPATH,"//*[@id='send2']").click()
 @when(u'Thực hiện kiểm tra xem username hiển thị đúng')
 def step_impl(context):
-    raise NotImplementedError(u'STEP: When Thực hiện kiểm tra xem username hiển thị đúng')
-
+   time.sleep(2)
+   # print(context.driver.find_element(By.XPATH,"/html/body/div[2]/header/div[1]/div/ul/li[1]/span").text)
+   driver = context.driver
+   x = driver.find_element(By.XPATH, "/html/body/div[2]/header/div[1]/div/ul/li[1]/span").text
+   print(x)
+   if x == ("Welcome, danh nguyen!"):
+       print(x + " user hiển thị đúng và đăng nhập đúng thông tin ")
+   else:
+       print(x + "user hiển thị sai và đăng nhập sai thông tin")
+   time.sleep(2)
 
 @then(u'thực hiện kiểm tra có hiển thị avatar user')
 def step_impl(context):
-    raise NotImplementedError(u'STEP: Then thực hiện kiểm tra có hiển thị avatar user')
+    driver = context.driver
+    driver.find_element(By.XPATH("/html/body/div[2]/header/div[1]/div/ul/li[2]/span/button")).click()
+    time.sleep(2)
