@@ -1,4 +1,3 @@
-
 from behave import *
 from selenium import webdriver
 import time
@@ -17,7 +16,10 @@ def step_impl(context):
 @when(u'Thực hiện nhập "{username}" và "{password}"')
 def step_impl(context,username,password):
     driver = context.driver
-    driver.find_element(By.XPATH,"//li[2]/a").click()
+    actions = ActionChains(driver)
+    a = driver.find_element(By.XPATH, "//li[2]/a")
+    actions.click(a)
+    actions.perform()
     time.sleep(2)
     driver.find_element(By.XPATH,"//*[@id='email']").send_keys(username)
     time.sleep(2)
@@ -50,5 +52,30 @@ def step_impl(context):
 @then(u'thực hiện kiểm tra có hiển thị avatar user')
 def step_impl(context):
     driver = context.driver
-    driver.find_element(By.XPATH("/html/body/div[2]/header/div[1]/div/ul/li[2]/span/button")).click()
+    # context.driver.find_element(By.XPATH,"").click()
     time.sleep(2)
+
+# ////////////////////////
+@when(u'Thực hiện bấm vào trang cá nhân của user')
+def step_impl(context):
+    driver = context.driver
+    actions = ActionChains(driver)
+    a = driver.find_element(By.XPATH,"/html/body/div[2]/header/div[1]/div/ul/li[2]/span/button")
+    b = driver.find_element(By.XPATH,"/html/body/div[2]/header/div[1]/div/ul/li[2]/div/ul/li[1]/a")
+    actions.click(a)
+    actions.click(b)
+    actions.perform()
+    time.sleep(2)
+
+
+
+
+
+@then(u'thực hiện kiểm tra thông tin user có giống với menu')
+def step_impl(context):
+    driver = context.driver
+    a = driver.find_element(By.XPATH, "//*[@id='maincontent']/div[2]/div[1]/div[3]/div[2]/div[1]/strong").text
+    b = driver.find_element(By.XPATH, "//*[@id='maincontent']/div[2]/div[1]/div[3]/div[2]/div[1]/div[1]/p").text
+    print(a)
+    print(b)
+    time.sleep(3)
