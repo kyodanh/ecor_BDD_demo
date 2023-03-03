@@ -7,12 +7,12 @@ Feature: My board  test case
 #    những case ở trên đã có ở file login
     And Thực hiên truy cập vào trang cá nhân
     And thực hiện bấm vào change name
-    And thực hiện nhập tên "<user>" mới
-    Then thực hiện kiểm tra có hiển thị avatar user
+    And thực hiện nhập tên "<user_fristname>" và "<user_lastname>" mới
+    Then thực hiện kiểm tra tên đã thay đổi
 
     Examples:
-    |username         |password        | user      |
-    |kyodanh@gmail.com|Dannguyen@0803  |   panda   |
+    |username         |password        | user_fristname  |user_lastname      |
+    |kyodanh@gmail.com|Dannguyen@0803  |   panda         |   danh             |
 
 
 

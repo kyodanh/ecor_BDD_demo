@@ -30,17 +30,39 @@ def step_impl(context):
    action.perform()
 
 
+@when(u'thực hiện nhập tên "{user_fristname}" và "{user_lastname}" mới')
+def step_impl(context,user_fristname,user_lastname):
+        driver = context.driver
+        time.sleep(2)
+        driver.find_element(By.XPATH, "//*[@id='firstname']").clear()
+        driver.find_element(By.XPATH, "//*[@id='lastname']").clear()
+        a = driver.find_element(By.XPATH, "//*[@id='firstname']")
+        b = driver.find_element(By.XPATH, "//*[@id='lastname']")
+        action = ActionChains(driver)
+        action.click(a)
+        action.send_keys(user_fristname)
+        time.sleep(2)
+        action.perform()
+        action.click(b)
+        action.send_keys(user_lastname)
+        time.sleep(2)
+        action.perform()
 
 
-@when(u'thực hiện nhập tên "panda" mới')
+@then(u'thực hiện kiểm tra tên đã thay đổi')
 def step_impl(context):
     driver = context.driver
-    time.sleep(2)
-    driver.find_element(By.XPATH,"//*[@id='firstname']").clear()
-    a = driver.find_element(By.XPATH,"//*[@id='firstname']")
     action = ActionChains(driver)
+    a = driver.find_element(By.XPATH,"//*[@id='form-validate']/div/div[1]/button")
     action.click(a)
-    action.send_keys("test123")
-    time.sleep(2)
     action.perform()
+    time.sleep(3)
+    a = driver.find_element(By.XPATH,"//*[@id='maincontent']/div[2]/div[1]/div[3]/div[2]/div[1]/div[1]/p").text
+    print("thông tin đã được thay đổi thành " + a)
+    time.sleep(2)
+
+
+
+
+
 
