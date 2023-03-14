@@ -12,7 +12,7 @@ Feature: My board  test case
 
     Examples:
     |username         |password        | user_fristname  |user_lastname      |
-    |kyodanh@gmail.com|Dannguyen@0803  |   panda         |   danh             |
+    |kyodanh@gmail.com|Dannguyen0803  |   panda         |   danh             |
 
 
 

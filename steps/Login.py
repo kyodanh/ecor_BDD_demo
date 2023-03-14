@@ -36,14 +36,15 @@ def step_impl(context):
     # x = context.driver.find_element(By.XPATH,"//*[@id='send2']")
     # action.click(x)
     context.driver.find_element(By.XPATH,"//*[@id='send2']").click()
+
 @when(u'Thực hiện kiểm tra xem username hiển thị đúng')
 def step_impl(context):
    time.sleep(2)
-   # print(context.driver.find_element(By.XPATH,"/html/body/div[2]/header/div[1]/div/ul/li[1]/span").text)
+   # print(context.driver.find_element(By.XPATH,"/html/body/div[1]/header/div[1]/div/ul/li[1]/span").text)
    driver = context.driver
-   x = driver.find_element(By.XPATH, "/html/body/div[2]/header/div[1]/div/ul/li[1]/span").text
+   x = driver.find_element(By.XPATH, "/html/body/div[1]/header/div[1]/div/ul/li[1]/span").text
    print(x)
-   if x == ("Welcome, danh nguyen!"):
+   if x == ("Welcome, Nguyễn Công Danh!"):
        print(x + " user hiển thị đúng và đăng nhập đúng thông tin ")
    else:
        print(x + "user hiển thị sai và đăng nhập sai thông tin")
@@ -60,13 +61,12 @@ def step_impl(context):
 def step_impl(context):
     driver = context.driver
     actions = ActionChains(driver)
-    a = driver.find_element(By.XPATH,"/html/body/div[2]/header/div[1]/div/ul/li[2]/span/button")
-    b = driver.find_element(By.XPATH,"/html/body/div[2]/header/div[1]/div/ul/li[2]/div/ul/li[1]/a")
+    a = driver.find_element(By.XPATH, "//button[@type='button']")
+    b = driver.find_element(By.XPATH, "//a[contains(text(),'My Account')]")
     actions.click(a)
     actions.click(b)
     actions.perform()
     time.sleep(2)
-
 
 
 

@@ -9,7 +9,7 @@ Feature: Login test case
 
     Examples:
     |username |password |
-    |kyodanh@gmail.com|Dannguyen@0803  |
+    |kyodanh@gmail.com|Dannguyen0803  |
 
 
 
@@ -23,6 +23,6 @@ Feature: Login test case
 
     Examples:
     |username |password |
-    |kyodanh@gmail.com|Dannguyen@0803  |
+    |kyodanh@gmail.com|Dannguyen0803  |
 
 #    run chạy sử dụng commine line python -m behave fearures/LoginTestCase.feature web sử dụng là https://magento.softwaretestingboard.com/

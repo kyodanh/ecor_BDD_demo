@@ -12,8 +12,8 @@ from selenium.webdriver.common.action_chains import ActionChains
 def step_impl(context):
     driver = context.driver
     actions = ActionChains(driver)
-    a = driver.find_element(By.XPATH, "/html/body/div[2]/header/div[1]/div/ul/li[2]/span/button")
-    b = driver.find_element(By.XPATH, "/html/body/div[2]/header/div[1]/div/ul/li[2]/div/ul/li[1]/a")
+    a = driver.find_element(By.XPATH,"//button[@type='button']")
+    b = driver.find_element(By.XPATH,"//a[contains(text(),'My Account')]")
     actions.click(a)
     actions.click(b)
     actions.perform()
