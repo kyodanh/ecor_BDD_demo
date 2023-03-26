@@ -17,12 +17,14 @@ def step_impl(context):
     time.sleep(3)
     driver = context.driver
     actions = ActionChains(driver)
-    a = driver.find_element(By.XPATH,("//*[@id='option-label-color-93-item-50']"))
-    actions.click(a)
+    color_a = driver.find_element(By.XPATH,("//*[@id='option-label-color-93-item-50']"))
+    actions.click(color_a)
     actions.perform()
     time.sleep(10)
     b = driver.find_element(By.XPATH,("//*[@id='maincontent']/div[3]/div/div[2]/div[3]/div/div/ol/li[1]/div/a/span/span/img")).get_attribute("src")
     print(b)
+    color_b 
+    
 
 
 @then(u'thực hiện kiểm tra màu sản phẩm')
