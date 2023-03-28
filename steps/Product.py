@@ -35,16 +35,26 @@ def step_impl(context):
     actions.perform()
     time.sleep(10)
     print(driver.find_element(By.XPATH, ("//*[@id='maincontent']/div[3]/div/div[2]/div[3]/div/div/ol/li[1]/div/a/span/span/img")).get_attribute("src"))
-    # case check màu
-    # dặt biến chõ fearture về màu xác rồi ở bieesn color đặt theo biến đó rồi làm hàm check
-    color = driver.find_element(By.XPATH,("//*[@id='option-label-color-93-item-50']"))
-    if color == ("") :
-        print("màu tím")
+
+
+
+
+# @then(u'thực hiện kiểm tra màu sản phẩm')
+# def step_impl(context):
+#     raise NotImplementedError(u'STEP: Then thực hiện kiểm tra màu sản phẩm')
+
+
+@then(u'thực hiện kiểm tra màu "{color}" "{mau}" "{maucancheck}"sản phẩm')
+def step_impl(context,color,mau,maucancheck):
+    time.sleep(3)
+    driver = context.driver
+    actions = ActionChains(driver)
+    color_x = driver.find_element(By.XPATH, (color))
+    actions.click(color_x)
+    actions.perform()
+    time.sleep(10)
+    src = driver.find_element(By.XPATH, ("//*[@id='maincontent']/div[3]/div/div[2]/div[3]/div/div/ol/li[1]/div/a/span/span/img")).get_attribute("src")
+    if src == (mau) :
+        print("màu áo đang là màu " + maucancheck)
     else:
-        print("yeddy")
-
-
-
-@then(u'thực hiện kiểm tra màu sản phẩm')
-def step_impl(context):
-    raise NotImplementedError(u'STEP: Then thực hiện kiểm tra màu sản phẩm')
+        print("không phải màu xanh")
