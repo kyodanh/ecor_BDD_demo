@@ -1,6 +1,8 @@
 from behave import *
 from selenium import webdriver
 import time
+
+from selenium.webdriver import Keys
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.action_chains import ActionChains
 
@@ -58,3 +60,58 @@ def step_impl(context,color,mau,maucancheck):
         print("màu áo đang là màu " + maucancheck)
     else:
         print("không phải màu xanh")
+
+
+
+@when(u'Thực hiện chuyển lên đầu trang')
+def step_impl(context):
+    time.sleep(3)
+    context.driver.find_element(By.TAG_NAME, ("html")).send_keys(Keys.HOME)
+    time.sleep(3)
+
+@when(u'Thực hiện tại bấm vào banner yoga đầu trang')
+def step_impl(context):
+    time.sleep(3)
+    diver = context.driver
+    diver.find_element(By.XPATH,("//*[@id='maincontent']/div[3]/div/div[2]/div[1]/a/span/span[2]")).click()
+
+
+@then(u'Hệ thống chuyển qua trang yoga và hệ thống hiển thị sản phẩm')
+def step_impl(context):
+    time.sleep(3)
+    diver = context.driver
+    a = diver.find_element(By.XPATH,("//*[@id='page-title-heading']/span")).text
+    if a == ("New Luma Yoga Collection"):
+        print("hệ thống đã chuyển qua trang " + a)
+    else:
+        print("Sai")
+    time.sleep(3)
+    diver.execute_script("window.scrollTo(0,document.body.scrollHeight)")
+    time.sleep(3)
+
+
+# @when(u'Bấm vào 1 sản phẩm "(product)" trên trang để xem chi tiết')
+# def step_impl(context,product):
+#     time.sleep(3)
+#     diver = context.driver
+#     diver.find_element(By.XPATH,(product)).click()
+#     time.sleep(3)
+
+
+@when(u'Bấm vào 1 sản phẩm "{product}" trên trang để xem chi tiết')
+def step_impl(context,product):
+    time.sleep(3)
+    diver = context.driver
+    diver.find_element(By.LINK_TEXT, (product)).click()
+    time.sleep(3)
+
+# @when(u'bấm vào sản phẩm')
+# def step_impl(context):
+#     time.sleep(3)
+#     diver = context.driver
+#     diver.find_element(By.LINK_TEXT, ("Echo Fit Compression Short")).click()
+#     time.sleep(3)
+
+@then(u'Hệ thống hiển thị thông tin chi tiết cho sản phẩm')
+def step_impl(context):
+    time.sleep(3)
